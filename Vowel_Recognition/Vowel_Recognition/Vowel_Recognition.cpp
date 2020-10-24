@@ -15,10 +15,11 @@ string normalized = "FALSE";                            // All global variables 
 long double samples=0, bitsPerSample=16, channel=1, sampleRate=16000;  // Speech parameters.  
 int frameSize = 320;        // Frame size of the frames taken.
 int frameCount = 5; // Number of frames to be taken in one recording of the vowel.
-long double scaleAmplitude = 500; // Amplitude to be scaled during normalization. 
-
+long double scaleAmplitude = 500; // Amplitude to be scaled during normalization.
+long double tokhuraWeight[12] = {1.0, 3.0, 7.0, 13.0, 19.0, 22.0, 25.0, 33.0, 42.0, 50.0, 56.0, 61.0};
 
 bool ReadFile(vector<long double> &amplitude, string fileName){
+	// cout<<"Read file - "<< fileName<<" START"<<endl;
 	fstream Istream;        // File pointer for reading the information in the recording.
 	Istream.open(fileName);    
 	
@@ -58,10 +59,12 @@ bool ReadFile(vector<long double> &amplitude, string fileName){
 		}
 	}
 	Istream.close();
+	// cout<<"Read file - "<< fileName<<" END"<<endl;
 	return true;
 }
 
 bool WriteFile(vector<vector<long double>> &avgCIS, string fileName){
+	// cout<<"Write file - "<< fileName<<" START"<<endl;
 	ofstream Ostream(fileName);
 	 
 	if(!Ostream){                            // If the file is not found.
@@ -73,11 +76,13 @@ bool WriteFile(vector<vector<long double>> &avgCIS, string fileName){
 	int row = avgCIS.size();
 	int col = avgCIS[0].size();
 	for(int i=0;i<row;i++){
-		for(int j=0;j<col;j++){
+		for(int j=1;j<col;j++){
 			Ostream<<avgCIS[i][j]<<" ";
 		}
 		Ostream<<endl;
 	}
+	Ostream.close();
+	// cout<<"Read file - "<< fileName<<" END"<<endl;
 	return true;
 }
 
@@ -108,7 +113,11 @@ void DCShift(vector<long double> &amplitude){
 }
 
 bool Trim(vector<long double> &trimAmplitude, vector<long double> &amplitude){
-	
+	int start = 16001;
+	int end = amplitude.size() - 16000;
+	for(int i=start;i<end;i++){
+		trimAmplitude.push_back(amplitude[i]);
+	}
 	int size = trimAmplitude.size();
 	return (size >= (frameSize*frameCount))?true:false;
 }
@@ -179,6 +188,8 @@ vector<long double> CalculateRIS(vector<long double> &trimAmplitude, int start, 
 int _tmain(int argc, _TCHAR* argv[]){
 
 	string folder = ".\\Recordings\\Sample\\";  // Folder containing the sample and test recording.
+	string refFolder = ".\\Recordings\\Vowel_Reference\\";  // Folder to contain the reference for each vowel as output.
+	string testFolder = ".\\Recordings\\Test\\";  // Folder to contain the test data for each vowel.
 	string fileName = "";
 	string extension = ".txt";      // Extension of the file used.
 	char vowels[5] = {'a', 'e', 'i', 'o', 'u'};   // Vowels recorded and recognized.
@@ -186,7 +197,8 @@ int _tmain(int argc, _TCHAR* argv[]){
 	string underScore = "_";      // Underscore.
 
 	for(int i=0;i<5;i++){
-		vector<vector<long double>> avgCIS(5, vector<long double>(12, 0.0));   // Average C'i values of each frame of all recordings of each vowel.
+		cout<<"Calculations for vowel - "<<vowels[i]<<" START"<<endl;
+		vector<vector<long double>> avgCIS(5, vector<long double>(13, 0.0));   // Average C'i values of each frame of all recordings of each vowel.
 		vector<vector<long double>> allCIS;		// All C'i values of each recording and frame.
 
 		for(long long int j=1;j<=10;j++){
@@ -195,13 +207,74 @@ int _tmain(int argc, _TCHAR* argv[]){
 			if(!ReadFile(amplitude, fileName)){
 				return 0;
 			}
+
+			// cout<<"Calculating DC Shift and Normalization of file - "<<fileName<<" START"<<endl; 
 			DCShift(amplitude);
 			Normalization(amplitude);
+			// cout<<"Calculating DC Shift and Normalization of file - "<<fileName<<" END"<<endl;
+
+			// cout<<"Trimming input file - "<<fileName<<" START"<<endl;
 			vector<long double> trimAmplitude;
 			if(!Trim(trimAmplitude, amplitude)){
 				cout<<"Recording " << fileName << " is too small"<<endl;
 				return 0;
 			}
+			// cout<<"Trimming input file - "<<fileName<<" END"<<endl;
+
+			// cout<<"Calculate RIS, AIS and CIS - START"<<endl;
+			for(int k=0;k<frameCount;k++){
+				int start = (frameSize * k);
+				int end = (frameSize * (k+1));
+				vector<long double> CIS = CalculateRIS(trimAmplitude, start, end);
+				allCIS.push_back(CIS);
+			}
+			// cout<<"Calculate RIS, AIS and CIS - END"<<endl;
+		}
+
+		// cout<<"Calculate Average of C's - START"<<endl;
+		for(int j=0;j<(frameCount*10);j++){
+			for(int k=1;k<=12;k++){
+				int x = j%frameCount;
+				int y = k;
+				avgCIS[x][y] += allCIS[j][k]; 
+			}
+		}
+		
+		for(int j=0;j<frameCount;j++){
+			for(int k=1;k<13;k++){
+				avgCIS[j][k] /= 10.0;
+			}
+		}
+		// cout<<"Calculate Average of C's - END"<<endl;
+
+		string outputfileName = refFolder + vowels[i] + extension;
+		WriteFile(avgCIS, outputfileName);
+		cout<<"Calculations for vowel - "<<vowels[i]<<" END"<<endl;
+	}
+	
+	cout<<"Application Installed"<<endl;
+	
+	for(int i=0;i<5;i++){	
+		for(long long int j=11;j<=20;j++){
+			fileName = testFolder + rollNo + underScore + vowels[i] + underScore + to_string(j) + extension;
+			string refFileName = refFolder + vowels[i] + extension;
+
+			vector<vector<long double>> allCIS(5, vector<long double>(13, 0.0));
+
+			vector<long double> amplitude;
+			if(!ReadFile(amplitude, fileName)){
+				return 0;
+			}
+
+			DCShift(amplitude);
+			Normalization(amplitude);
+
+			vector<long double> trimAmplitude;
+			if(!Trim(trimAmplitude, amplitude)){
+				cout<<"Recording " << fileName << " is too small"<<endl;
+				return 0;
+			}
+
 			for(int k=0;k<frameCount;k++){
 				int start = (frameSize * k);
 				int end = (frameSize * (k+1));
@@ -209,25 +282,12 @@ int _tmain(int argc, _TCHAR* argv[]){
 				allCIS.push_back(CIS);
 			}
 		}
-
-		for(int j=0;j<(frameCount*10);j++){
-			for(int k=0;k<12;k++){
-				int x = j%frameCount;
-				int y = k;
-				avgCIS[x][y] += allCIS[j][k]; 
-			}
-		}
-
-		for(int j=0;j<frameCount;j++){
-			for(int k=0;k<12;k++){
-				avgCIS[j][k] /= 10.0;
-			}
-		}
-		
-		string outputfileName = folder + vowels[i] + extension;
-		WriteFile(avgCIS, outputfileName);
-
 	}
+
+
+
+	
+
 
 	return 0;
 }

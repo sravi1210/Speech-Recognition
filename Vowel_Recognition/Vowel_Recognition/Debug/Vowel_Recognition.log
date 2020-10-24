@@ -1,4 +1,4 @@
-﻿Build started 24-Oct-20 9:09:30 PM.
+﻿Build started 24-Oct-20 11:59:08 PM.
      1>Project "C:\Users\Lenovo\Documents\Speech Recognition\Vowel_Recognition\Vowel_Recognition\Vowel_Recognition.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\Vowel_Recognition.lastbuildstate".
@@ -31,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.29
+Time Elapsed 00:00:02.55

@@ -1,0 +1,29 @@
+Speech Details Of The User:
+Number Of Samples Taken: 160000
+Bits Per Sample: 16
+Number Of Channel: 1
+Normalization: Done With The Amplitude Factor - 1000
+STE Noise: 0.0270479
+
+User Spoke:
+Yes Yes Yes No No No 
+
+Details Of Each Word: 
+1. Yes:
+	Average ZCR: 0.127
+	Average STE: 6.09645
+2. Yes:
+	Average ZCR: 0.157833
+	Average STE: 7.41441
+3. Yes:
+	Average ZCR: 0.115167
+	Average STE: 7.44651
+4. No:
+	Average ZCR: 0.0442222
+	Average STE: 5.63104
+5. No:
+	Average ZCR: 0.0447778
+	Average STE: 9.31014
+6. No:
+	Average ZCR: 0.0423333
+	Average STE: 8.29865

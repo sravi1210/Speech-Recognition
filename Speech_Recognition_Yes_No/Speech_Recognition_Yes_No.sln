@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Speech_Recognition_Yes_No", "Speech_Recognition_Yes_No\Speech_Recognition_Yes_No.vcxproj", "{7ED3A10C-4D0D-45AC-AB8C-BA3F233E7B0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7ED3A10C-4D0D-45AC-AB8C-BA3F233E7B0B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7ED3A10C-4D0D-45AC-AB8C-BA3F233E7B0B}.Debug|Win32.Build.0 = Debug|Win32
+		{7ED3A10C-4D0D-45AC-AB8C-BA3F233E7B0B}.Release|Win32.ActiveCfg = Release|Win32
+		{7ED3A10C-4D0D-45AC-AB8C-BA3F233E7B0B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

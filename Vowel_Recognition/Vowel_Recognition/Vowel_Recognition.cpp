@@ -14,7 +14,7 @@ using namespace std;
 
 string normalized = "FALSE";                            // All global variables for storing the different parameters of speech recognition.
 long double samples=0, bitsPerSample=16, channel=1, sampleRate=16000;  // Speech parameters.  
-int frameSize = 1600;  // Frame size of the frames taken.
+int frameSize = 320;  // Frame size of the frames taken.
 int frameCount = 5; // Number of frames to be taken in one recording of the vowel.
 long double scaleAmplitude = 100; // Amplitude to be scaled during normalization.
 long double tokhuraWeight[12] = {1.0, 3.0, 7.0, 13.0, 19.0, 22.0, 25.0, 33.0, 42.0, 50.0, 56.0, 61.0};   // Tokhura Weights.
@@ -22,6 +22,7 @@ vector<long double> raisedSineWeight;    //  Raised Sine Window weights.
 long double M_PI =  3.141592653589793238;   // Global value of PI.
 
 void CalculateRSW(){
+	raisedSineWeight.clear();
 	for(int i=0;i<12;i++){
 		long double m = (long double)(i+1);
 		long double theta = (M_PI * m)/12.0;
@@ -75,7 +76,6 @@ bool ReadFile(vector<long double> &amplitude, string fileName){
 		else{
 			samples++;
 			long double amp = stold(word);
-			// amp = (-1.0)*amp;
 			amplitude.push_back(amp);
 		}
 	}
@@ -161,6 +161,7 @@ bool Trim(vector<long double> &trimAmplitude, vector<long double> &amplitude){
 
 void CalculateCIS(vector<long double> &CIS, vector<long double> &AIS){
 	for(int i=1;i<=12;i++){
+		AIS[i] = (-1.0)*AIS[i];
 		long double sum = 0.0;
 		for(int j=1;j<i;j++){
 			sum += ((((long double)j)*CIS[j]*AIS[i-j])/((long double)i));
@@ -216,7 +217,7 @@ vector<long double> CalculateRIS(vector<long double> &trimAmplitude, int start, 
 		RIS.push_back(sum);
 	}
 	CalculateAIS(AIS, RIS);
-	CIS.push_back(logl(RIS[0])); // First cepstral coefficient is logarithm of the gain term of LPC model.
+	CIS.push_back(logl(RIS[0])); // First cepstral coefficient is logarithm of the gain term of LPC model OR energy term R[0].
 	CalculateCIS(CIS, AIS);
 	return CIS;
 }
@@ -250,6 +251,7 @@ char VowelRecognize(vector<vector<long double>> &allCIS, string refFolder, strin
 		fileName = refFolder + vowels[i] + extension;
 		Istream.open(fileName);
 		if(!Istream){
+			cout<<"Skipping file "<<fileName<<" | Unable to open."<<endl;
 			continue;
 		}
 		for(int j=0;j<5;j++){
@@ -324,7 +326,7 @@ int _tmain(int argc, _TCHAR* argv[]){
 		}
 		
 		for(int j=0;j<frameCount;j++){
-			for(int k=1;k<13;k++){
+			for(int k=1;k<=12;k++){
 				avgCIS[j][k] /= 10.0;
 			}
 		}
@@ -338,9 +340,9 @@ int _tmain(int argc, _TCHAR* argv[]){
 
 	for(int i=0;i<5;i++){	
 		for(long long int j=11;j<=20;j++){
-			fileName = testFolder + rollNo + underScore + vowels[i] + underScore + to_string(j) + extension;
+			fileName = folder + rollNo + underScore + vowels[i] + underScore + to_string(j-10) + extension;
 
-			vector<vector<long double>> allCIS(5, vector<long double>(13, 0.0));
+			vector<vector<long double>> allCIS;
 
 			vector<long double> amplitude;
 			if(!ReadFile(amplitude, fileName)){

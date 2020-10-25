@@ -1,0 +1,15 @@
+# Steps To Compile And Run 'Vowel Recognition' Project
+
+	1. Open the project 'Vowel_Recognition' in Visual Studio 2010.
+	2. Open the file 'Vowel_Recognition.cpp'. 
+	3. Build the project using 'Build Solution' under 'Build' option.
+	4. Run the project using 'Start Without Debugging' under 'Debug' option.
+	5. Terminal will open, and will take some time for 'Training and Installation'.
+	6. After installation is completed you can see the output vowel recognized corresponding to the different test data in the terminal.
+	
+# Sample And Test Data
+	1. A total of 100 recordings are provided for the project. Sample data in the folder 'Vowel_Recognition\Vowel_Recognition\Recordings\Sample' (10 x 5 recordings) and Test data in the folder 'Vowel_Recognition\Vowel_Recognition\Recordings\Test' (10 x 5 recordings).
+	2. The reference files are created and stored into in the folder 'Vowel_Recognition\Vowel_Recognition\Recordings\Vowel_Reference' (5 refernences, one for each vowel).
+	3. A sample output folder as 'Sample Output' is also provided within the same folder as the README.
+	
+# Thank You

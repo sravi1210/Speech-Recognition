@@ -126,7 +126,7 @@ void Normalization(vector<long double> &amplitude){
 void DCShift(vector<long double> &amplitude){
 	int size = amplitude.size();
 	long double DCOffset = 0;
-	for(int i=0;i<16000;i++){          // Take the sum of all the amplitudes in the recording.
+	for(int i=0;i<size;i++){          // Take the sum of all the amplitudes in the recording.
 		DCOffset += amplitude[i];
 	}
 	DCOffset /= (long double)size;    // Take the average of the sum values.

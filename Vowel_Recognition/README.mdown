@@ -9,7 +9,7 @@
 	
 # Sample And Test Data
 	1. A total of 100 recordings are provided for the project. Sample data in the folder 'Vowel_Recognition\Vowel_Recognition\Recordings\Sample' (10 x 5 recordings) and Test data in the folder 'Vowel_Recognition\Vowel_Recognition\Recordings\Test' (10 x 5 recordings).
-	2. The reference files are created and stored into in the folder 'Vowel_Recognition\Vowel_Recognition\Recordings\Vowel_Reference' (5 refernences, one for each vowel).
+	2. The reference files are created and stored into in the folder 'Vowel_Recognition\Vowel_Recognition\Recordings\Vowel_Reference' (5 references, one for each vowel).
 	3. A sample output folder as 'Sample Output' is also provided within the same folder as the README.
 	
 # Thank You

@@ -1,4 +1,4 @@
-﻿Build started 21-Nov-20 1:25:04 AM.
+﻿Build started 21-Nov-20 1:41:17 AM.
      1>Project "C:\Users\Lenovo\Documents\Speech Recognition\K_Means\K_Means\K_Means.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\K_Means.lastbuildstate".
@@ -31,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.05
+Time Elapsed 00:00:02.66

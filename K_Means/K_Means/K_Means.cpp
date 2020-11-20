@@ -17,7 +17,6 @@ using namespace std;
 
 // Global Parameters.
 long double delta = 1;
-long double oldDistortion = 0;
 int codebook = 8; // Size of the codebook calculated.
 vector<vector<int>> assignedRegions;
 
@@ -129,8 +128,8 @@ void UpdateRegions(vector<vector<long double>> &universe, vector<vector<long dou
 }
 
 
-void Llyods_KMeans(vector<vector<long double>> &universe, vector<vector<long double>> &regions){
-	oldDistortion = 0;
+void Lloyds_KMeans(vector<vector<long double>> &universe, vector<vector<long double>> &regions){
+	long double oldDistortion = 0;
 	AssignRegions(universe, regions);
 	long double tDistortion = TotalDistortion(universe, regions);
 	while(abs(tDistortion - oldDistortion) > delta){
@@ -141,6 +140,7 @@ void Llyods_KMeans(vector<vector<long double>> &universe, vector<vector<long dou
 		oldDistortion = tDistortion;
 		tDistortion = TotalDistortion(universe, regions);
 	}
+	return;
 }
 
 int _tmain(int argc, _TCHAR* argv[]) {
@@ -163,7 +163,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		regions.push_back(universe[index]);
 	}
 
-	Llyods_KMeans(universe, regions);
+	Lloyds_KMeans(universe, regions);
 
 	PrintMachine(regions);
 

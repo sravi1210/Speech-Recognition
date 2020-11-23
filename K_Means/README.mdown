@@ -8,5 +8,5 @@
 	
 # Sample And Test Data
 	1. You can provide your own universe file. Rename your file as 'Universe.csv' and paste into the folder same as 'K_Means.cpp'.
-	
+	2. 'Sample Output KMeans' is also added with the code.
 # Thank You

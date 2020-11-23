@@ -1,0 +1,12 @@
+# Steps To Compile And Run 'K_Means' Project
+
+	1. Open the project 'K_Means' in Visual Studio 2010.
+	2. Open the file 'K_Means.cpp'. 
+	3. Build the project using 'Build Solution' under 'Build' option.
+	4. Run the project using 'Start Without Debugging' under 'Debug' option.
+	5. You can see the output codebook vector on the Terminal or in the file 'Results.txt'.
+	
+# Sample And Test Data
+	1. You can provide your own universe file. Rename your file as 'Universe.csv' and paste into the folder same as 'K_Means.cpp'.
+	
+# Thank You

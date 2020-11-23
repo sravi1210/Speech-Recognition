@@ -1,34 +1,28 @@
-﻿Build started 23-Nov-20 2:34:44 AM.
-     1>Project "C:\Users\Lenovo\Documents\Speech Recognition\K_Means\K_Means\K_Means.vcxproj" on node 2 (rebuild target(s)).
-     1>_PrepareForClean:
-         Deleting file "Debug\K_Means.lastbuildstate".
-       InitializeBuildStatus:
+﻿Build started 24-Nov-20 2:23:19 AM.
+     1>Project "C:\Users\Lenovo\Documents\Speech Recognition\K_Means\K_Means\K_Means.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
          Creating "Debug\K_Means.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\K_Means.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-         stdafx.cpp
+         All outputs are up-to-date.
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\K_Means.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt K_Means.cpp
          K_Means.cpp
        ManifestResourceCompile:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\K_Means.exe.embed.manifest.res" Debug\K_Means_manifest.rc 
+         All outputs are up-to-date.
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lenovo\Documents\Speech Recognition\K_Means\Debug\K_Means.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\K_Means.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Lenovo\Documents\Speech Recognition\K_Means\Debug\K_Means.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lenovo\Documents\Speech Recognition\K_Means\Debug\K_Means.lib" /MACHINE:X86 Debug\K_Means.exe.embed.manifest.res
          Debug\K_Means.obj
          Debug\stdafx.obj
        Manifest:
-         Deleting file "Debug\K_Means.exe.embed.manifest".
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\K_Means.exe.embed.manifest" /manifest Debug\K_Means.exe.intermediate.manifest
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\K_Means.exe.embed.manifest.res" Debug\K_Means_manifest.rc 
+         All outputs are up-to-date.
        LinkEmbedManifest:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lenovo\Documents\Speech Recognition\K_Means\Debug\K_Means.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\K_Means.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Lenovo\Documents\Speech Recognition\K_Means\Debug\K_Means.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lenovo\Documents\Speech Recognition\K_Means\Debug\K_Means.lib" /MACHINE:X86 Debug\K_Means.exe.embed.manifest.res
-         Debug\K_Means.obj
-         Debug\stdafx.obj
+         All outputs are up-to-date.
          K_Means.vcxproj -> C:\Users\Lenovo\Documents\Speech Recognition\K_Means\Debug\K_Means.exe
        FinalizeBuildStatus:
          Deleting file "Debug\K_Means.unsuccessfulbuild".
          Touching "Debug\K_Means.lastbuildstate".
-     1>Done Building Project "C:\Users\Lenovo\Documents\Speech Recognition\K_Means\K_Means\K_Means.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\Users\Lenovo\Documents\Speech Recognition\K_Means\K_Means\K_Means.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.30
+Time Elapsed 00:00:04.26

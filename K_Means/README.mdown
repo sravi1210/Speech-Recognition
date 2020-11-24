@@ -5,6 +5,7 @@
 	3. Build the project using 'Build Solution' under 'Build' option.
 	4. Run the project using 'Start Without Debugging' under 'Debug' option.
 	5. You can see the output codebook vector on the Terminal or in the file 'Results.txt'.
+	6. You can change the value of delta if required in the global variable 'delta' in the code, default value taken is 0.002.
 	
 # Sample And Test Data
 	1. You can provide your own universe file. Rename your file as 'Universe.csv' and paste into the folder same as 'K_Means.cpp'.
